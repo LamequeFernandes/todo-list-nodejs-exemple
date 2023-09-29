@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  todo_list_db:
+    image: postgres
+    container_name: todo-list-db
+    ports:
+      - '5430:5432'
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+    volumes:
+      - ./script_criacao_bd.sql:/docker-entrypoint-initdb.d/init.sql
+      - data:/var/lib/postgresql/data
+
+volumes:
+  data:
