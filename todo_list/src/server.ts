@@ -1,5 +1,6 @@
 import express from 'express';
 import { Router, Request, Response } from 'express';
+// import { prisma } from './services/prisma';
 
 const app = express();
 const route = Router();
@@ -16,4 +17,12 @@ route.get("/ola", (req: Request, res: Response) => {
 
 app.use(route);
 
-app.listen(3001, () => console.log("Ola mundo!!!"));
+app.listen(3001, async() => {
+    console.log("Ola mundo!!!");
+
+    // const usuarios = await prisma.usuario.findMany();
+    // const query = `SELECT * FROM usuario where id_usuario = 1`;
+    // const usurio = await prisma.$queryRaw(query);
+
+    // console.log(usurio);
+});
