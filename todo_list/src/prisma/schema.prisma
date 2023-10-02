@@ -1,0 +1,32 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model tarefa {
+  id_tarefa  BigInt      @id
+  status     status_enum
+  titulo     String
+  detalhes   String?
+  id_usuario BigInt
+  usuario    usuario     @relation(fields: [id_usuario], references: [id_usuario], onDelete: Cascade, onUpdate: NoAction, map: "usuario_tarefa_fk")
+}
+
+model usuario {
+  id_usuario BigInt   @id
+  nome       String
+  email      String   @unique
+  senha      String?
+  admin      Boolean
+  tarefa     tarefa[]
+}
+
+enum status_enum {
+  A_FAZER
+  EM_ANDAMENTO
+  CONCLUIDA
+}
