@@ -8,16 +8,16 @@ datasource db {
 }
 
 model tarefa {
-  id_tarefa  BigInt      @id
+  id_tarefa  Int      @id
   status     status_enum
   titulo     String
   detalhes   String?
-  id_usuario BigInt
+  id_usuario Int
   usuario    usuario     @relation(fields: [id_usuario], references: [id_usuario], onDelete: Cascade, onUpdate: NoAction, map: "usuario_tarefa_fk")
 }
 
 model usuario {
-  id_usuario BigInt   @id
+  id_usuario Int   @id
   nome       String
   email      String   @unique
   senha      String?
