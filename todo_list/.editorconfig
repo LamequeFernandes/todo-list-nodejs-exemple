@@ -1,0 +1,29 @@
+# Configurações padrão para todos os arquivos
+root = true
+
+[*]
+indent_style = space
+indent_size = 4
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# Configurações específicas para JavaScript e TypeScript
+[*.js]
+indent_size = 2
+
+[*.ts]
+indent_size = 2
+
+# Configurações específicas para Python
+[*.py]
+indent_size = 4
+
+# Configurações específicas para HTML
+[*.html]
+indent_size = 2
+
+# Configurações específicas para CSS
+[*.css]
+indent_size = 2
