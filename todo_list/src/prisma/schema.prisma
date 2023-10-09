@@ -17,10 +17,10 @@ model tarefa {
 }
 
 model usuario {
-  id_usuario Int   @id
+  id_usuario Int   @id @default(autoincrement())
   nome       String
   email      String   @unique
-  senha      String?
+  senha      String
   admin      Boolean
   tarefa     tarefa[]
 }

@@ -10,10 +10,10 @@ SET search_path TO public;
 CREATE TYPE status_enum AS ENUM ('A_FAZER', 'EM_ANDAMENTO', 'CONCLUIDA');
 
 CREATE TABLE USUARIO (
-    id_usuario BIGINT PRIMARY KEY,
+    id_usuario BIGSERIAL PRIMARY KEY,
     nome TEXT NOT NULL,
     email TEXT NOT NULL UNIQUE,
-    senha TEXT,
+    senha TEXT NOT NULL,
     admin BOOLEAN NOT NULL
 );
 
@@ -23,7 +23,7 @@ CREATE TABLE TAREFA (
     titulo TEXT NOT NULL,
     detalhes TEXT,
     id_usuario BIGINT NOT NULL,
-    CONSTRAINT USUARIO_TAREFA_FK FOREIGN KEY (id_usuario) 
+    CONSTRAINT USUARIO_TAREFA_FK FOREIGN KEY (id_usuario)
         REFERENCES USUARIO (id_usuario)
         ON DELETE CASCADE
 );
@@ -50,7 +50,7 @@ ALTER TABLE TAREFA
 --     titulo TEXT NOT NULL,
 --     detalhes TEXT,
 --     id_usuario BIGINT NOT NULL,
---     CONSTRAINT USUARIO_TAREFA_FK FOREIGN KEY (id_usuario) 
+--     CONSTRAINT USUARIO_TAREFA_FK FOREIGN KEY (id_usuario)
 --         REFERENCES USUARIO (id_usuario)
 --         ON DELETE CASCADE
 -- );
