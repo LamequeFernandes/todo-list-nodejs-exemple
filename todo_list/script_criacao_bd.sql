@@ -18,7 +18,7 @@ CREATE TABLE USUARIO (
 );
 
 CREATE TABLE TAREFA (
-    id_tarefa BIGINT NOT NULL PRIMARY KEY,
+    id_tarefa BIGSERIAL NOT NULL PRIMARY KEY,
     status status_enum NOT NULL,
     titulo TEXT NOT NULL,
     detalhes TEXT,

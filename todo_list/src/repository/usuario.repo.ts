@@ -73,13 +73,12 @@ export async function createUsuario(usuario: UsuarioPostType): Promise<any> {
         nome: usuario.nome,
         admin: usuario.admin,
         email: usuario.email,
-        id_usuario: usuario.id_usuario,
         senha: hashPassword,
       },
     });
 
     return {
-      msg: `Usuario ${usuario.id_usuario} criado com sucesso!`,
+      msg: `Usuario ${usuario.nome} criado com sucesso!`,
     };
   } catch (error: any) {
     throw error;

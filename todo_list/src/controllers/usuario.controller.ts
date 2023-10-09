@@ -47,13 +47,12 @@ export async function postUsuario(req: Request, res: Response) {
     const result = await createUsuario(body.data);
     res.status(201).json(result);
   } catch (error: any) {
-    res.status(400).json(JSON.parse(error));
+    res.status(400).json({msg: String(error)});
   }
 }
 
 export async function putUsuario(req: Request, res: Response) {
   try {
-    const idUsuario = req.params.id;
     const camposAlterados = UsuarioPutSchema.safeParse(req.body);
 
     if (!camposAlterados.success) {
@@ -61,7 +60,7 @@ export async function putUsuario(req: Request, res: Response) {
       return;
     }
 
-    const result = await alterUsuario(Number(idUsuario), camposAlterados.data);
+    const result = await alterUsuario(Number(req.userId!), camposAlterados.data);
     res.status(200).json(result);
   } catch (error: any) {
     res.status(400).json(JSON.parse(error));
@@ -70,9 +69,7 @@ export async function putUsuario(req: Request, res: Response) {
 
 export async function deleteUsuario(req: Request, res: Response) {
   try {
-    const idUsuario = req.params.id;
-
-    const result = await removeUsuario(Number(idUsuario));
+    const result = await removeUsuario(Number(req.userId!));
     res.status(200).json(result);
   } catch (error: any) {
     res.status(400).json(JSON.parse(error));

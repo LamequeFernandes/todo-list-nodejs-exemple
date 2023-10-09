@@ -8,7 +8,7 @@ datasource db {
 }
 
 model tarefa {
-  id_tarefa  Int      @id
+  id_tarefa  Int      @id @default(autoincrement())
   status     status_enum
   titulo     String
   detalhes   String?

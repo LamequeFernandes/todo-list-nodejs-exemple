@@ -1,7 +1,6 @@
 import { z } from "zod";
 
 export const UsuarioPostSchema = z.object({
-  id_usuario: z.number(),
   nome: z.string().min(10, "O nome deve possuir pelo menos 10 caracteres"),
   email: z.string().email(),
   senha: z.string(),
