@@ -1,11 +1,29 @@
 import { Response, Request } from "express";
 import {
   alterUsuario,
+  authUsuario,
   createUsuario,
   getAllUsuarios,
   removeUsuario,
 } from "../repository/usuario.repo";
-import { UsuarioPostSchema, UsuarioPutSchema } from "../schemas/usuario.schema";
+import { LoginSchema, UsuarioPostSchema, UsuarioPutSchema } from "../schemas/usuario.schema";
+
+export async function loginUsuario(req: Request, res: Response) {
+  try {
+
+    const body = LoginSchema.safeParse(req.body);
+
+    if (!body.success) {
+      res.status(422).send(body.error);
+      return;
+    }
+
+    const tokenJWT = await authUsuario(body.data.email, body.data.senha);
+    res.status(200).json({token: tokenJWT})
+  } catch (e: any) {
+    res.status(400).json({msg: String(e)});
+  }
+}
 
 export async function getUsuarios(req: Request, res: Response) {
   try {

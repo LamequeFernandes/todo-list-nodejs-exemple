@@ -18,5 +18,11 @@ export const UsuarioPutSchema = z.object({
   admin: z.boolean().optional(),
 });
 
+export const LoginSchema = z.object({
+  email: z.string(),
+  senha: z.string()
+});
+
 export type UsuarioPostType = z.infer<typeof UsuarioPostSchema>;
 export type UsuarioPutType = z.infer<typeof UsuarioPutSchema>;
+export type LoginType = z.infer<typeof LoginSchema>;
