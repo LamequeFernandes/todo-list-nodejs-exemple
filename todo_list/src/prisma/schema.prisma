@@ -13,6 +13,7 @@ model tarefa {
   titulo     String
   detalhes   String?
   id_usuario Int
+  dt_criacao DateTime?   @default(now()) @db.Timestamp(6)
   usuario    usuario     @relation(fields: [id_usuario], references: [id_usuario], onDelete: Cascade, onUpdate: NoAction, map: "usuario_tarefa_fk")
 }
 

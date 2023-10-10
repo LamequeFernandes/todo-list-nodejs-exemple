@@ -23,6 +23,7 @@ CREATE TABLE TAREFA (
     titulo TEXT NOT NULL,
     detalhes TEXT,
     id_usuario BIGINT NOT NULL,
+    dt_criacao TIMESTAMP DEFAULT NOW(),
     CONSTRAINT USUARIO_TAREFA_FK FOREIGN KEY (id_usuario)
         REFERENCES USUARIO (id_usuario)
         ON DELETE CASCADE
